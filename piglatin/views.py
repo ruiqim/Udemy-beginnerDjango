@@ -6,5 +6,19 @@ def home(request):
 
 
 def translate(request):
-    original = request.GET['originalText']
-    return HttpResponse("You're on the translate page")
+    original = request.GET['originalText'].lower()
+
+    translation = ''
+
+    for word in original.split():
+         if word[0] in ['a','e','i','o','u']:
+             # Vowel
+             translation += word
+             translation += 'yay '
+         else:
+            # Consonat
+            translation += word[1:]
+            translation += word[0]
+            translation += 'ay '
+
+    return HttpResponse(translation)
