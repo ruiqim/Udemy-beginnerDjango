@@ -6,4 +6,5 @@ def home(request):
 
 
 def translate(request):
+    original = request.GET['originalText']
     return HttpResponse("You're on the translate page")
